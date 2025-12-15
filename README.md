@@ -1,3 +1,6 @@
+# Link da aplicação:
+https://fiap-tech-challenge-04-obesity-prediction-qn6vnlve9ssmckyywd5a.streamlit.app/
+
 # 🩺 Projeto de Predição e Análise de Obesidade
 
 Este projeto é uma aplicação web interativa desenvolvida em **Python** utilizando **Streamlit**. Ele tem como objetivo auxiliar na identificação de riscos de obesidade através de Machine Learning e fornecer uma análise exploratória detalhada dos dados demográficos e de hábitos de vida.
