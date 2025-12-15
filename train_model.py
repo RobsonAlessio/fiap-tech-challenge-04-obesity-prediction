@@ -8,7 +8,7 @@ from utils import DropFeatures, OneHotEncodingNames, OrdinalFeature, MinMaxWithF
 
 # 1. Carregar dados
 print("Carregando dados...")
-df = pd.read_csv('obesidade/Obesity.csv')
+df = pd.read_csv('Obesity.csv')
 
 # 2. Separar Target e Features
 X = df.drop('Obesity', axis=1)
@@ -19,7 +19,7 @@ label_encoder = LabelEncoder()
 y_encoded = label_encoder.fit_transform(y)
 
 # Salvar o LabelEncoder para usar no App (para decodificar a predição depois)
-joblib.dump(label_encoder, 'obesidade/modelo/label_encoder.joblib')
+joblib.dump(label_encoder, 'modelo/label_encoder.joblib')
 
 # 4. Pipeline de Pré-processamento
 pipeline = Pipeline([
@@ -34,7 +34,7 @@ print("Aplicando pipeline...")
 X_processed = pipeline.fit_transform(X)
 
 # Salvar df_clean.csv para o app ler a estrutura
-X_processed.to_csv('obesidade/dados/df_clean.csv', index=False)
+X_processed.to_csv('dados/df_clean.csv', index=False)
 
 # 5. Treinamento do Modelo
 print("Treinando modelo XGBoost...")
@@ -48,5 +48,5 @@ acc = model.score(X_test, y_test)
 print(f"Acurácia do modelo: {acc:.2f}")
 
 # 6. Salvar o modelo
-joblib.dump(model, 'obesidade/modelo/xgb.joblib')
+joblib.dump(model, 'modelo/xgb.joblib')
 print("Modelo e dados salvos com sucesso!")

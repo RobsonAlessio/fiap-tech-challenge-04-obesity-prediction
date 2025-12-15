@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pandas as pd
 import joblib
@@ -22,15 +21,15 @@ tab1, tab2, tab3 = st.tabs(["ℹ️ Sobre", "🔮 Preditor de Risco", "📊 Dash
 @st.cache_data
 def load_data():
     # Carregar dados brutos
-    df = pd.read_csv('obesidade/Obesity.csv')
+    df = pd.read_csv('Obesity.csv')
     return df
 
 @st.cache_resource
 def load_model_assets():
-    model = joblib.load('obesidade/modelo/xgb.joblib')
-    label_encoder = joblib.load('obesidade/modelo/label_encoder.joblib')
+    model = joblib.load('modelo/xgb.joblib')
+    label_encoder = joblib.load('modelo/label_encoder.joblib')
     # Carregando df_clean apenas para pegar a estrutura das colunas e uma linha de referência
-    df_clean = pd.read_csv('obesidade/dados/df_clean.csv')
+    df_clean = pd.read_csv('dados/df_clean.csv')
     return model, label_encoder, df_clean
 
 try:
@@ -320,4 +319,3 @@ with tab3:
         fig_corr = px.imshow(corr_matrix, text_auto=True, aspect="auto", color_continuous_scale='RdBu_r',
                              title="O que está mais relacionado? (Correlação de Pearson)")
         st.plotly_chart(fig_corr, use_container_width=True)
-
